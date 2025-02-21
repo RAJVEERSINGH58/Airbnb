@@ -7,7 +7,7 @@ main().then(()=>{
 }).catch(err => console.log(err));
 
 async function main() {
-  await mongoose.connect('mongodb://127.0.0.1:27017/wanderlust');
+  await mongoose.connect('mongodb+srv://pheonixrajveer:Raj%408181@cluster0.4egvl.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0');
 }
 
 const initDB = async () => {
@@ -21,4 +21,15 @@ const initDB = async () => {
   }
 };
 
-initDB();
+const deleteData = async () => {
+   try {
+    await mongoose.connect('mongodb+srv://pheonixrajveer:Raj%408181@cluster0.4egvl.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0');
+    console.log("connected");
+    await Listing.deleteMany({});
+    
+   } catch (error) {
+    console.log(error)
+   }
+}
+
+deleteData();
